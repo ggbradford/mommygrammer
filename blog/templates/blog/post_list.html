@@ -1,31 +1,23 @@
-<html>
-    <head>
-        <title>Mommygrammer.com</title>
-        <style>
-            h1 {color:black; text-align: center;}
-            h3 {color:gray; text-align: center;}
-            p {color:black;}
-            body {background-color: powderblue;}
-            .title {text-transform: uppercase;}
 
-        </style>
-
-    </head>
-
-    <body>
-        <h1 class="title"> Mommygrammer.com</h1>
-        <h3>for programming mommies</h3>
-        <div>
-                <h1><a href="/">Mommygrammer Blog</a></h1>
-            </div>
-    
+ {% extends 'blog/base.html' %}
+{% block content %}   
+        
         {% for post in posts %}
     
-            <div>
-                <p>published: {{ post.published_date}}</p>
-                <h2><a href="">{{ post.title}}</a></h2>
-                <p>{{ post.text|linebreaksbr }}</p>
+            <div class="post">
+                
+            
+                <div class="title">
+                <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+                    </h2>
+                    <p> test</p>
+                </div>
+                
+                 <p>{{ post.text|linebreaksbr }}</p>
+                 
+                <div class="date">
+                    <p>published: {{ post.published_date }}</p>
+                    </div>
             </div>
         {% endfor %}
-    </body>
-</html>
+{% endblock %}
